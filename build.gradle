@@ -1,0 +1,39 @@
+plugins {
+    id 'application'
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.freefair.lombok") version "8.6"
+}
+
+group = 'me.darkboy'
+version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'me.darkboy.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.telegram:telegrambots:6.9.7.1'
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.telegram:telegrambots-abilities:6.9.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
